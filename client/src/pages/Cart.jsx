@@ -93,62 +93,64 @@ function Cart() {
         </>
       )}
       {cartBooks && cartBooks.length > 0 && (
-        <div className=" pt-24 p-5">
-          <h1 className=" text-4xl text-zinc-500 font-semibold">Your Cart</h1>
-          {cartBooks.map((items, i) => (
-            <div
-              key={i}
-              className="  w-full bg-zinc-800 mt-5 flex items-center px-5 py-2"
-            >
-              <div className="md:flex justify-between items-center w-full grid grid-cols-3 gap-3 md:gap-8   ">
-                <Link
-                  to={`/view-book-details/${items._id}`}
-                  className=" order-1 md:order-none "
-                >
-                  <img src={items.url} alt="book" className=" h-20 min-w-14 " />
-                </Link>
-                <Link
-                  to={`/view-book-details/${items._id}`}
-                  className="col-span-3 order-2 md:order-none "
-                >
-                  <div className=" space-y-1  ">
-                    <p className=" text-xl text-zinc-200 font-semibold">
-                      {items.title}
-                    </p>
-                    <p className=" text-md text-zinc-400 font-semibold">
-                      {items.desc.slice(0, 100)}...
-                    </p>
-                  </div>
-                </Link>
-                <div className=" text-2xl text-zinc-100 font-semibold order-1 md:order-none ">
-                  &#8377;{items.price}
-                </div>
-                <button
-                  className="w-10 mx-8 bg-red-100 md:hidden hover:bg-red-200 order-1 md:order-none text-red-600 h-10 text-2xl flex justify-center items-center rounded"
-                  onClick={() => removeCartBook(items._id)}
-                >
-                  <AiFillDelete />
-                </button>
-              </div>
-              <button
-                className="w-10 mx-8 hidden bg-red-100 hover:bg-red-200 text-red-600 h-10 text-2xl md:flex justify-center items-center rounded"
-                onClick={() => removeCartBook(items._id)}
+        <div className="pt-24 p-5 flex flex-col md:flex-row justify-between">
+          {/* Cart Items on the Left */}
+          <div className="w-full md:w-3/5 max-w-[1000px] flex flex-col">
+            <h1 className="text-7xl text-zinc-500 font-semibold">Your Cart</h1>
+            {cartBooks.map((items, i) => (
+              <div
+                key={i}
+                className="w-full bg-zinc-800 mt-5 flex flex-col px-7 py-6"
               >
-                <AiFillDelete />
-              </button>
-            </div>
-          ))}
-          <div className=" w-full flex justify-end">
-            <div className=" bg-zinc-800 h-36 m-5 w-52 p-2 rounded-md space-y-3">
-              <h1 className=" text-3xl font-semibold text-zinc-200 text-center">
+                <div className="flex flex-col md:flex-row justify-between items-center w-full md:space-x-9">
+                  <Link
+                    to={`/view-book-details/${items._id}`}
+                    className="flex-shrink-0 mb-4 md:mb-0"
+                  >
+                    <img
+                      src={items.url}
+                      alt="book"
+                      className="h-36 w-30 object-cover"
+                    />
+                  </Link>
+                  <div className="flex-grow flex flex-col space-y-3">
+                    <Link to={`/view-book-details/${items._id}`}>
+                      <p className="text-3xl text-zinc-200 font-semibold">
+                        {items.title}
+                      </p>
+                      <p className="text-xl text-zinc-400 font-semibold">
+                        {items.desc.slice(0, 100)}...
+                      </p>
+                    </Link>
+                    <div className="flex justify-between items-center">
+                      <div className="text-4xl text-zinc-100 font-semibold">
+                        &#8377;{items.price}
+                      </div>
+                      <button
+                        className="w-14 bg-red-100 hover:bg-red-200 text-red-600 h-14 text-4xl flex justify-center items-center rounded"
+                        onClick={() => removeCartBook(items._id)}
+                      >
+                        <AiFillDelete />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Total Amount and Place Order on the Right */}
+          <div className="w-full md:w-2/5 flex justify-end md:justify-start flex-col pt-[6rem]">
+            <div className="bg-zinc-800 h-auto md:h-84 mx-auto w-full max-w-[20rem] p-6 rounded-md space-y-6">
+              <h1 className="text-6xl font-semibold text-zinc-200 text-center">
                 Total Amount
               </h1>
-              <div className=" flex justify-between w-full text-zinc-400 font-semibold px-3">
-                <p className="">{cartBooks.length} books</p>
+              <div className="flex justify-between w-full text-zinc-400 font-semibold px-4 text-2xl">
+                <p>{cartBooks.length} books</p>
                 <p>&#8377; {total}</p>
               </div>
               <button
-                className=" bg-blue-400 p-2 text-zinc-950 font-semibold text-md w-full rounded-md hover:bg-blue-500 outline-none transition-all duration-300"
+                className="bg-blue-400 p-4 text-zinc-950 font-semibold text-2xl w-full rounded-md hover:bg-blue-500 outline-none transition-all duration-300"
                 onClick={placeOrder}
               >
                 Place your order
