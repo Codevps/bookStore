@@ -7,7 +7,6 @@ import bookRouter from "./Router/bookRoute.js";
 import favRouter from "./Router/favRoute.js";
 import cartRouter from "./Router/cartRoute.js";
 import orderRouter from "./Router/orderRoute.js";
-import getOtp, { verifyOtp } from "./mail/otpmail.js";
 const app = express();
 dotenv.config();
 const port = process.env.PORT || 4001;
@@ -25,9 +24,6 @@ app.use("/api/v1/", bookRouter);
 app.use("/api/v1/", favRouter);
 app.use("/api/v1/", cartRouter);
 app.use("/api/v1/", orderRouter);
-
-app.get("/generate-otp", getOtp);
-app.post("/verify-otp", verifyOtp);
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

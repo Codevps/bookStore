@@ -1,6 +1,5 @@
 import User from "../Model/user.js";
 import Order from "../Model/order.js";
-import sendMail from "../mail/mail.js";
 
 //Place order
 export const placeOrder = async (req, res) => {
@@ -22,7 +21,6 @@ export const placeOrder = async (req, res) => {
       const orderInfo = await Order.findById(newOrder._id)
         .populate("book")
         .populate("user");
-      sendMail(orderInfo);
 
       //clearing cart
       await User.findByIdAndUpdate(id, { $pull: { cart: orderData._id } });
@@ -103,7 +101,6 @@ export const updateOrder = async (req, res) => {
       return res.status(404).json({ message: "Error while updating!" });
     }
 
-    sendMail(orderInfo);
     return res.status(200).json({ message: "Status updated successfully!" });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error!" });
