@@ -23,7 +23,10 @@ function AllOrders() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axois.get(`/api/v1/get-all-orders`, { headers });
+        const response = await axois.get(
+          `https://book-store-server-pi.vercel.app/api/v1/get-all-orders`,
+          { headers }
+        );
         setAllOrders(response.data.data);
         setloader(false);
       } catch (error) {

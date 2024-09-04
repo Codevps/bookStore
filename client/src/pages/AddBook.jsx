@@ -26,9 +26,13 @@ function AddBook() {
         language: data.language,
       };
 
-      const response = await axios.post(`/api/v1/add-book`, bookInfo, {
-        headers,
-      });
+      const response = await axios.post(
+        `https://book-store-server-pi.vercel.app/api/v1/add-book`,
+        bookInfo,
+        {
+          headers,
+        }
+      );
       toast.success(response.data.message);
       navigate("/all-books");
     } catch (error) {

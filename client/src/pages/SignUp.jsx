@@ -23,7 +23,10 @@ function SignUp() {
         address: data.address,
       };
 
-      await axios.post(`/api/v1/signup`, userInfo);
+      await axios.post(
+        `https://book-store-server-pi.vercel.app/api/v1/signup`,
+        userInfo
+      );
       toast.success("SignUp successfully!");
       navigate("/signin");
     } catch (error) {

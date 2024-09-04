@@ -16,9 +16,12 @@ function Favourites() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`/api/v1/get-all-fav-books`, {
-          headers,
-        });
+        const response = await axios.get(
+          `https://book-store-server-pi.vercel.app/api/v1/get-all-fav-books`,
+          {
+            headers,
+          }
+        );
         setfavouriteBooks(response.data.favouriteBooks);
         setloader(false);
       } catch (error) {

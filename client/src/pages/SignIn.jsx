@@ -22,7 +22,10 @@ function SignIn() {
         password: data.password,
       };
 
-      const response = await axios.post(`/api/v1/signin`, userInfo);
+      const response = await axios.post(
+        `https://book-store-server-pi.vercel.app/api/v1/signin`,
+        userInfo
+      );
       toast.success("LogIn Successfully!");
       dispatch(authActions.login());
       dispatch(authActions.changeRole(response.data.role));

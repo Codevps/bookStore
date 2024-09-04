@@ -26,7 +26,10 @@ function UpdateBook() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`/api/v1/get-book/${id}`, { headers });
+        const response = await axios.get(
+          `https://book-store-server-pi.vercel.app/api/v1/get-book/${id}`,
+          { headers }
+        );
         setbookData(response?.data?.book);
         setloader(false);
       } catch (error) {
@@ -48,7 +51,7 @@ function UpdateBook() {
       };
 
       const response = await axios.put(
-        `/api/v1/update-book`,
+        `https://book-store-server-pi.vercel.app/api/v1/update-book`,
         { bookInfo },
         { headers }
       );

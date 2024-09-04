@@ -27,7 +27,9 @@ function ViewBookDetails() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`/api/v1/get-book/${id}`);
+        const response = await axios.get(
+          `https://book-store-server-pi.vercel.app/api/v1/get-book/${id}`
+        );
         setData(response.data.book);
         setloader(false);
       } catch (error) {
@@ -39,7 +41,11 @@ function ViewBookDetails() {
 
   const handleFavourites = async () => {
     try {
-      const response = await axios.put(`/api/v1/add-fav-book`, {}, { headers });
+      const response = await axios.put(
+        `https://book-store-server-pi.vercel.app/api/v1/add-fav-book`,
+        {},
+        { headers }
+      );
       toast.success(response.data.message);
     } catch (error) {
       toast.error(error.response.data.message);
@@ -48,7 +54,11 @@ function ViewBookDetails() {
 
   const handleCart = async () => {
     try {
-      const response = await axios.put(`/api/v1/add-to-cart`, {}, { headers });
+      const response = await axios.put(
+        `https://book-store-server-pi.vercel.app/api/v1/add-to-cart`,
+        {},
+        { headers }
+      );
       toast.success(response.data.message);
     } catch (error) {
       toast.error(error.response.data.message);
@@ -58,7 +68,10 @@ function ViewBookDetails() {
   const handleDelete = async () => {
     try {
       if (confirm("Are you sure to delete this book?")) {
-        const response = await axios.delete(`/api/v1/delete-book`, { headers });
+        const response = await axios.delete(
+          `https://book-store-server-pi.vercel.app/api/v1/delete-book`,
+          { headers }
+        );
         toast.success(response.data.message);
         navigate("/all-books");
       }

@@ -11,7 +11,9 @@ function AllBook() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`/api/v1/get-all-books`);
+        const response = await axios.get(
+          `https://book-store-server-pi.vercel.app/api/v1/get-all-books`
+        );
         setData(response.data.books);
         setloader(false);
       } catch (error) {

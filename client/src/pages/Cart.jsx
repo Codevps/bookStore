@@ -19,7 +19,10 @@ function Cart() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`/api/v1/get-user-cart`, { headers });
+        const response = await axios.get(
+          `https://book-store-server-pi.vercel.app/api/v1/get-user-cart`,
+          { headers }
+        );
         setcartBooks(response.data.cart);
         setloader(false);
       } catch (error) {
@@ -41,7 +44,7 @@ function Cart() {
   const placeOrder = async () => {
     try {
       const response = await axios.post(
-        `/api/v1/order-placed`,
+        `https://book-store-server-pi.vercel.app/api/v1/order-placed`,
         { order: cartBooks },
         { headers }
       );
@@ -56,7 +59,7 @@ function Cart() {
     try {
       if (confirm("Are You sure to remove book from cart?")) {
         const response = await axios.put(
-          `/api/v1/remove-from-cart/${bookid}`,
+          `https://book-store-server-pi.vercel.app/api/v1/remove-from-cart/${bookid}`,
           {},
           { headers }
         );

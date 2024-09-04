@@ -26,9 +26,12 @@ function BookUpdate() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`/api/v1/get-book/${id}`, {
-          headers,
-        });
+        const response = await axios.get(
+          `https://book-store-server-pi.vercel.app/api/v1/get-book/${id}`,
+          {
+            headers,
+          }
+        );
         setbookData(response?.data?.book);
         setloader(false);
       } catch (error) {
@@ -57,9 +60,13 @@ function BookUpdate() {
           language: bookData.language,
         };
 
-        const response = await axios.put(`/api/v1/update-book`, bookInfo, {
-          headers,
-        });
+        const response = await axios.put(
+          `https://book-store-server-pi.vercel.app/api/v1/update-book`,
+          bookInfo,
+          {
+            headers,
+          }
+        );
         toast.success(response.data.message);
         navigate(`/view-book-details/${id}`);
       } else {

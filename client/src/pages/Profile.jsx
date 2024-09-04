@@ -17,7 +17,10 @@ function Profile() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`/api/v1/get-user-data`, { headers });
+        const response = await axios.get(
+          `https://book-store-server-pi.vercel.app/api/v1/get-user-data`,
+          { headers }
+        );
         setProfile(response.data.userData);
         setloader(false);
       } catch (error) {

@@ -13,7 +13,7 @@ const BookCard = ({ data, favourite }) => {
       };
 
       const response = await axios.put(
-        `/api/v1/remove-fav-book`,
+        `https://book-store-server-pi.vercel.app/api/v1/remove-fav-book`,
         {},
         { headers }
       );
