@@ -19,7 +19,7 @@ function Cart() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`/api/v1//get-user-cart`, { headers });
+        const response = await axios.get(`/api/v1/get-user-cart`, { headers });
         setcartBooks(response.data.cart);
         setloader(false);
       } catch (error) {

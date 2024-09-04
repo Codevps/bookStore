@@ -26,7 +26,7 @@ function BookUpdate() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get(`/api/v1//get-book/${id}`, {
+        const response = await axios.get(`/api/v1/get-book/${id}`, {
           headers,
         });
         setbookData(response?.data?.book);

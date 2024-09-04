@@ -34,7 +34,7 @@ function Setting() {
 
   const updateAddress = async () => {
     try {
-      const response = await axios.put(`/api/v1///update-address`, Value, {
+      const response = await axios.put(`/api/v1/update-address`, Value, {
         headers,
       });
       toast.success(response.data.message);
