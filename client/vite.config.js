@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     host: true,
     proxy: {
-      "/api": "https://book-store-server-pi.vercel.app/",
+      "/api": "https://book-store-server-pi.vercel.app",
     },
   },
 });
