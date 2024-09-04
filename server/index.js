@@ -31,6 +31,4 @@ app.listen(port, () => {
 
 // PORT=5000
 // MONGO_URL="mongodb://localhost:27017/bookstore"
-// SENDER="codevps07@gmail.com"
-// PASSKEY="ckmfugetydllkohj"
 // SECRET_KEY="bookstore"

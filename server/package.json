@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
-  "author": "Anuj",
+  "author": "Pratham",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
