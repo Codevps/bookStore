@@ -9,7 +9,7 @@ import cartRouter from "./Router/cartRoute.js";
 import orderRouter from "./Router/orderRoute.js";
 const app = express();
 dotenv.config();
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 5000;
 
 //middleware
 app.use(express.json());
@@ -28,7 +28,3 @@ app.use("/api/v1/", orderRouter);
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
-
-// PORT=5000
-// MONGO_URL="mongodb://localhost:27017/bookstore"
-// SECRET_KEY="bookstore"
